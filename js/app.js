@@ -153,7 +153,7 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 //PLAYER
-// Now write your own player class
+// Write player class
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function() {
@@ -296,7 +296,8 @@ var Speed = function getRandomInt(min, max) {
 };
 
 var findIndex = function(array, value) {
-    for (var i = 0; i < array.length; i++) {
+    var len = array.length;
+    for (var i = 0; i < len; i++) {
         if (array[i].x == value) {
             return i;
         }
@@ -347,7 +348,8 @@ var removeLife = function() {
 };
 
 var initStars = function() {
-    for (var i = 0; i < allStars.length; i++) {
+    var len = allStars.length;
+    for (var i = 0; i < len; i++) {
         allStars[i].x = COL_WIDTH * Math.floor(random(0, 7));
         allStars[i].y = ROW_HEIGHT * Math.floor(random(1, 4));
     }
@@ -373,7 +375,8 @@ var hideStars = function(j, array) {
 };
 
 var checkCollisions = function(firstx, firsty, array2, mindistance, mytest) {
-    for (var j = 0; j < array2.length; j++) {
+    var len= array2.length;
+    for (var j = 0; j < len; j++) {
         var distance = Math.sqrt((Math.pow(firstx - array2[j].x, 2)) + (Math.pow(firsty - array2[j].y, 2)));
         if (distance < mindistance) {
             if (mytest !== undefined) {
@@ -385,10 +388,10 @@ var checkCollisions = function(firstx, firsty, array2, mindistance, mytest) {
 };
 // Now instantiate your objects.
 //Create Ennemies object
-var maxEnemies = 3;
+var MAX_ENEMIES = 3;
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
-for (var i = 0; i < maxEnemies; i++) {
+for (var i = 0; i < MAX_ENEMIES; i++) {
     allEnemies[i] = new Enemy(ENEMY_STARTX, random(55, 320));
 }
 //Create myPlayer object
@@ -397,9 +400,9 @@ var myPlayer = new Player();
 var player = myPlayer;
 
 //Create Stars object
-var maxStars = 10;
+var MAX_STARS = 10;
 var allStars = [];
-for (var i = 0; i < maxStars; i++) {
+for (var i = 0; i < MAX_STARS; i++) {
     allStars[i] = new Star();
 }
 
