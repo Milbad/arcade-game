@@ -1,6 +1,6 @@
 //canvas
-var colWidth = 101;
-var rowHeight = 83;
+var COL_WIDTH = 101;
+var ROW_HEIGHT = 83;
 //obstacles
 var rockImages = 'images/Rock.png';
 var treeImages = 'images/Tree.png';
@@ -13,17 +13,17 @@ var winLevel = false;
 var winGame = false;
 var score = 0;
 //player's start position
-var startX = 0;
-var startY = 510;
+var START_X = 0;
+var START_Y = 510;
 //Arrival
-var arrivalX = 590;
-var arrivalY = -5;
+var ARRIVAL_X = 590;
+var ARRIVAL_Y = -5;
 //Ennemies starting position and mouvement
-var enemyStartX = -200;
-var enemyWidth = 101;
-var move = 600;
-var minSpeed = 200;
-var maxSpeed = 300;
+var ENEMY_STARTX = -200;
+var ENEMY_WIDTH = 101;
+var MOVE = 600;
+var MIN_SPEED = 200;
+var MAX_SPEED = 300;
 // playerLifes
 var playerLifes = 3;
 //sounds
@@ -112,7 +112,7 @@ var Enemy = function(x, y, sprite) {
     this.sprite = "images/enemy-bug.png";
     this.x = x;
     this.y = y;
-    this.speed = Speed(minSpeed, maxSpeed);
+    this.speed = Speed(MIN_SPEED, MAX_SPEED);
 };
 
 // Update the enemy's position, required method for game
@@ -124,7 +124,7 @@ Enemy.prototype.update = function(dt) {
     if (currentLevel === 3) {
         this.speed = 200;
     }
-    if (this.x > arrivalX + enemyWidth) {
+    if (this.x > ARRIVAL_X + ENEMY_WIDTH) {
         var index = findIndex(allEnemies, this.x);
         initEnemy(index);
     }
@@ -138,7 +138,7 @@ Enemy.prototype.update = function(dt) {
             while (aleas === 0) {
                 aleas = Math.floor(random(-1, 1));
             }
-            var newY = (move * dt) * aleas;
+            var newY = (MOVE * dt) * aleas;
             if ((this.y += newY) < 0) {
                 this.y = 20;
             } else {
@@ -159,13 +159,13 @@ Enemy.prototype.render = function() {
 var Player = function() {
     // Variables applied to each of our instances go here
     this.sprite = playerSprite;
-    this.x = startX;
-    this.y = startY;
+    this.x = START_X;
+    this.y = START_Y;
 };
 // Draw the player on the screen, required method for game
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(playerSprite), this.x, this.y);
-    if (playerLifes > 0 && this.x >= arrivalX && this.y <= arrivalY) {
+    if (playerLifes > 0 && this.x >= ARRIVAL_X && this.y <= ARRIVAL_Y) {
         if (currentLevel != 3) {
             winLevel = true;
             score += 100;
@@ -210,18 +210,18 @@ Player.prototype.handleInput = function(key) {
     var oldY = player.y;
     switch (key) {
         case "left": // x cannot be smaller than 0
-            if (this.x > startX) {
+            if (this.x > START_X) {
                 this.x -= 20;
             }
             break;
         case "right": // x cannot be bigger than 590
-            if (this.x <= arrivalX) {
+            if (this.x <= ARRIVAL_X) {
                 this.x += 20;
             }
             break;
         case "up": // y cannot be smaller than -5
-            if (this.y > arrivalY) {
-                if (this.y < 30 && this.x < arrivalX) {
+            if (this.y > ARRIVAL_Y) {
+                if (this.y < 30 && this.x < ARRIVAL_X) {
                     sndSplash.play();
                     setTimeout(removeLife, 500);
                 }
@@ -229,7 +229,7 @@ Player.prototype.handleInput = function(key) {
             }
             break;
         case "down": // y cannot be bigger than 510
-            if (this.y <= startY) {
+            if (this.y <= START_Y) {
                 this.y += 20;
             }
             break;
@@ -246,8 +246,8 @@ Player.prototype.handleInput = function(key) {
 //STARS
 var Star = function() {
     this.sprite = "images/Star.png";
-    this.x = colWidth * Math.floor(random(0, 7));
-    this.y = rowHeight * Math.floor(random(1, 4));
+    this.x = COL_WIDTH * Math.floor(random(0, 7));
+    this.y = ROW_HEIGHT * Math.floor(random(1, 4));
 };
 
 Star.prototype.render = function() {
@@ -348,24 +348,24 @@ var removeLife = function() {
 
 var initStars = function() {
     for (var i = 0; i < allStars.length; i++) {
-        allStars[i].x = colWidth * Math.floor(random(0, 7));
-        allStars[i].y = rowHeight * Math.floor(random(1, 4));
+        allStars[i].x = COL_WIDTH * Math.floor(random(0, 7));
+        allStars[i].y = ROW_HEIGHT * Math.floor(random(1, 4));
     }
 };
 var replaceStar = function(i) {
-    allStars[i].x = colWidth * Math.floor(random(0, 7));
-    allStars[i].y = rowHeight * Math.floor(random(1, 4));
+    allStars[i].x = COL_WIDTH * Math.floor(random(0, 7));
+    allStars[i].y = ROW_HEIGHT * Math.floor(random(1, 4));
 };
 var initPlayer = function() {
-    player.x = startX;
-    player.y = startY;
+    player.x = START_X;
+    player.y = START_Y;
 };
 
 var initEnemy = function(i) {
-    allEnemies[i].x = enemyStartX;
+    allEnemies[i].x = ENEMY_STARTX;
     allEnemies[i].y = random(55, 320);
     if (currentLevel !== 3) {
-        allEnemies[i].speed = Speed(minSpeed, maxSpeed);
+        allEnemies[i].speed = Speed(MIN_SPEED, MAX_SPEED);
     }
 };
 var hideStars = function(j, array) {
@@ -389,7 +389,7 @@ var maxEnemies = 3;
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
 for (var i = 0; i < maxEnemies; i++) {
-    allEnemies[i] = new Enemy(enemyStartX, random(55, 320));
+    allEnemies[i] = new Enemy(ENEMY_STARTX, random(55, 320));
 }
 //Create myPlayer object
 var myPlayer = new Player();
