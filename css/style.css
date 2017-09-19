@@ -1,0 +1,151 @@
+body {
+    text-align: center;
+    background-color: lightsteelblue;
+    font-family: 'Bungee Inline', cursive;
+}
+
+#main h1 {
+    color: red;
+    text-shadow: 0 0 8px black;
+}
+
+h1 {
+    font-size: 2em;
+    color: red;
+    text-shadow: 0 0 8px black;
+}
+
+h2 {
+    font-variant: small-caps;
+}
+
+li {
+    text-align: left;
+    padding-bottom: 15px;
+}
+
+#menu {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.rules {
+    border-style: dashed;
+    width: 33%;
+    margin-left: 33%;
+    margin-right: auto;
+}
+
+.selection {
+    display: flex;
+    max-width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.heart {
+    width: 35px;
+}
+
+#life {
+    margin: 0px;
+}
+
+.player {
+    cursor: pointer;
+    padding: 0px;
+}
+
+.selected {
+    border-bottom: solid  orangered;
+    border-radius: 50%;
+}
+
+.chosen {
+    box-shadow: 10px 10px 5px black;
+    border: none;
+}
+
+#timer {
+    background-color: white;
+    color: black;
+    border-style: groove;
+    border-width: 5px;
+    border-color: red;
+}
+
+#classic {
+    border-style: dashed;
+    border-width: 5px;
+    background-color: black;
+}
+
+.choice {
+    float: left;
+    width: 44%;
+    font-size: 25px;
+    padding-top: 10px;
+    margin: 15px;
+}
+
+.gameoverchoice {
+    max-width: 100%;
+    display: flex;
+}
+
+#easy {
+    background-color: green;
+}
+
+#normal {
+    background-color: orange;
+}
+
+#difficult {
+    background-color: red;
+}
+
+#again,
+.button {
+    cursor: pointer;
+    font-size: 22px;
+    display: block;
+    width: 150px;
+    margin: 0 auto;
+    line-height: 30px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    text-align: center;
+    border: solid 1px;
+    background-color: darkgrey;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: #B30D5D;
+}
+
+#easy:focus {
+    border-color: blue;
+    border-style: double;
+    border-width: 5px;
+}
+
+#again:hover,
+#easy:hover,
+#normal:hover,
+#difficult:hover,
+#classic:hover,
+#timer:hover {
+    background-color: #B30D5D;
+}
+
+#again:visited,
+#easy:visited,
+#normal:visited,
+#difficult:visited {
+    background-color: #B30D5D;
+}

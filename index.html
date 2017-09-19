@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Effective JavaScript: Frogger</title>
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="menu" class="main">
+        <div id="main">
+            <h1>My Arcade Game</h1>
+            <section class="rules">
+                <h2>Rules</h2>
+                <ol>
+                    <li>Select a player and a difficulty.</li>
+                    <li>Hit the Start button.</li>
+                    <li>Reach the boat!!</li>
+                    <li>Avoid the bugs and do not fall into the water!</li>
+                    <li>Grab some stars before the bugs and win extra points!</li>
+                    <li>Hold down the arrow keys to move.</li>
+                </ol>
+            </section>
+            <section class="selection">
+                <div class="choice">
+                    <h4>Choose your hero:</h4>
+                    <img id="boy" class="player" src="images/char-boy.png" alt="boy">
+                    <img id="cat-girl" class="player" src="images/char-cat-girl.png" alt="cat-girl">
+                    <img id="horn-girl" class="player" src="images/char-horn-girl.png" alt="horn-girl">
+                    <img id="princess" class="player" src="images/char-princess-girl.png" alt="princess">
+                </div>
+                <div class="choice">
+                    <h4>Choose the difficulty:</h4>
+                    <button id="easy" class="button">Easy</button>
+                    <button id="normal" class="button">Normal</button>
+                    <button id="difficult" class="button">Difficult</button>
+                </div>
+            </section>
+            <button id="play" class="button">START</button>
+        </div>
+    </div>
+    <header id="nextlevel">
+        <h1>Next Level</h1>
+    </header>
+    <header id="menu2">
+        <h1>My Arcade Game</h1>
+        <section class="selection">
+            <h2 id="score">My score: 0</h2>
+            <h2 id="chrono">Time : 0:0 </h2>
+            <h2 id="life">
+            <img id= "life1" class="heart" src="images/Heart.png" alt="life 1">
+            <img id= "life2" class="heart" src="images/Heart.png" alt="life 2">
+            <img id= "life3" class="heart" src="images/Heart.png" alt="life 3">
+            </h2>
+            <h2 id="level">Level: </h2>
+        </section>
+    </header>
+    <section id="gameover">
+        <h1>GAME OVER</h1>
+        <h2> Too bad you loose, Press OK to play again</h2>
+        <button id="stay" class="button">OK</button>
+    </section>
+    <section id="winScreen">
+        <h1>You WIN !!</h1>
+        <h2> Congratulation for finishing this game !</h2>
+        <h3 id="finalscore">Your final score is: </h3>
+        <button id="again">Play again</button>
+    </section>
+    <script src="js/resources.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/engine.js"></script>
+</body>
+
+</html>
